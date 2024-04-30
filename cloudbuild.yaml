@@ -1,5 +1,5 @@
 steps:
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.0', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.1', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.0']
+    args: ['push', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.1']
