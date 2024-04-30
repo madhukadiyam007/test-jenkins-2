@@ -1,5 +1,13 @@
 steps:
-  - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.0', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins:1.0']
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'SERVICE_NAME', '--image', 'gcr.io/PROJECT_ID/IMAGE', '--region', 'SERVICE_REGION']
+images:
+- us-central1-docker.pkg.dev/carbon-quanta-419012/test/jenkins
