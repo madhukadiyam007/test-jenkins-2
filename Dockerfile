@@ -24,3 +24,4 @@ RUN apt-get update && \
 
 # drop back to the regular jenkins user - good practice
 USER jenkins
+EXPOSE 8080
